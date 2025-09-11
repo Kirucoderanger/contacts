@@ -92,14 +92,21 @@ const createContact = async (req, res) => {
 };
 const updateContact = async (req, res) => {
     const contactId = req.params.id;
-    const updatedContact = req.body;
+    const updatedContact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+  };
     try {
-        const db = mongodb.getDatabase();
+        /*const db = mongodb.getDatabase();
         const contactsCollection = db.db().collection('contacts');
         const result = await contactsCollection.updateOne(
             { _id: new objectId(contactId) },
             { $set: updatedContact }
-        );
+        );*/
+        const result = await mongodb.getDatabase().db().collection('contacts').replaceOne({ _id: new ObjectId(contactId) }, updatedContact);
         if (result.matchedCount === 0) {
             return res.status(404).json({ error: 'Contact not found' });
         }
