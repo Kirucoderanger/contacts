@@ -68,12 +68,23 @@ const getAllContacts = (req, res) => {
 };*/
 
 const createContact = async (req, res) => {
-    const newContact = req.body;
+  const newContact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+  };
     try {
-        const db = mongodb.getDatabase();
-        const contactsCollection = db.db().collection('contacts');
-        const result = await contactsCollection.insertOne(newContact);
-        res.status(201).json(result.ops[0]);
+        //const db = mongodb.getDatabase();
+        //const contactsCollection = db.db().collection('contacts');
+        //const result = await contactsCollection.insertOne(newContact);
+        //res.status(204).send();
+        const result = await mongodb.getDatabase().db().collection('contacts').insertOne(newContact);
+        res.status(201).json(result);
+        
+        //res.setHeader('Content-Type', 'application/json');
+        //res.status(201).json(result.ops[0]);
     } catch (err) {
         console.error('Error creating contact:', err);
         res.status(500).json({ error: 'An error occurred while creating contact' });
