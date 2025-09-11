@@ -1,17 +1,31 @@
 //localhost:3000/api/contacts
 ###Get all contacts
-GET http://localhost:3000/contacts
+GET https://contacts-21ut.onrender.com/contacts
 
 ###Get contact by ID
-GET http://localhost:3000/contacts/68ba1651bbd9884f838afbf4
+GET https://contacts-21ut.onrender.com/contacts/68c33a55f7c119affe28e912
 ###Create a new contact
-POST http://localhost:3000/contacts
+POST https://contacts-21ut.onrender.com/contacts
+Content-Type: application/json
+
+{
+    "firstName": "Smith",
+    "lastName": "Joseph",
+    "email": "smith.joseph@example.com",
+    "favoriteColor": "white",
+    "birthday": "1982-02-02"
+
+}
+###Update a contact by ID
+PUT https://contacts-21ut.onrender.com/contacts/68c33a55f7c119affe28e912
 Content-Type: application/json
 
 {
     "firstName": "Jane",
-    "lastName": "Doe",
-    "email": "jane.doe@example.com",
-    "favoriteColor": "Green",
+    "lastName": "Smith",
+    "email": "jane@example.com",
+    "favoriteColor": "Blue",
     "birthday": "1992-02-02"
 }
+###Delete a contact by ID
+DELETE https://contacts-21ut.onrender.com/contacts/68c33832f7c119affe28e911
