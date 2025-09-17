@@ -30,26 +30,35 @@ const body = require('express-validator').body;
 }*/
 
 const createUserValidator = [
-    body('name')
+    body('firstName')
         .trim()
-        .notEmpty().withMessage('Name is required')
+        .notEmpty().withMessage('First name is required')
         .isAlpha()
-        .isLength({ max: 100 }).withMessage('Name cannot exceed 100 characters'),
+        .isLength({ max: 100 }).withMessage('First name cannot exceed 100 characters'),
+    body('lastName')
+        .trim()
+        .notEmpty().withMessage('Last name is required')
+        .isAlpha()
+        .isLength({ max: 100 }).withMessage('Last name cannot exceed 100 characters'),
 
     body('email')
         .isEmail().withMessage('Valid email is required')
         .isLength({ max: 320 }).withMessage('Email cannot exceed 320 characters')
         .normalizeEmail(),
 
-    body('dateOfBirth')
+    body('birthday')
         .isISO8601({ strict: true })
-        .withMessage('Valid date of birth is required (expected: ISO8601 yyyy-MM-dd)')
+        .withMessage('Valid birthday is required (expected: ISO8601 yyyy-MM-dd)')
         .custom((value) => {
             return value < new Date(Date.now()).getFullYear() - 21
         })
         .withMessage('User must be at least 21 years of age'),
+    body('favoriteColor')
+        .optional()
+        .isLength({ max: 50 })
+        .withMessage('Favorite color cannot exceed 50 characters in length'),
 
-    body('role')
+    /*body('role')
         .isIn(["USER", "MANAGER", "ADMIN", "SYSTEM_ADMIN"])
         .withMessage('Valid role is required'),
 
@@ -57,6 +66,7 @@ const createUserValidator = [
         .optional()
         .isLength({ max: 500 })
         .withMessage('Comments cannot exceed 500 characters in length'),
+        */
 ]
 
 module.exports = {
