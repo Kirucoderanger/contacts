@@ -3,7 +3,7 @@
 GET https://contacts-21ut.onrender.com/contacts
 
 ###Get contact by ID
-GET https://contacts-21ut.onrender.com/contacts/68c33a55f7c119affe28e912
+GET https://contacts-21ut.onrender.com/contacts/68c33b8cf7c119affe28e913
 ###Create a new contact
 POST https://contacts-21ut.onrender.com/contacts
 Content-Type: application/json
@@ -17,13 +17,13 @@ Content-Type: application/json
 
 }
 ###Update a contact by ID
-PUT https://contacts-21ut.onrender.com/contacts/68c33a55f7c119affe28e912
+PUT https://contacts-21ut.onrender.com/contacts/68c33b8cf7c119affe28e913
 Content-Type: application/json
 
 {
     "firstName": "Jane",
     "lastName": "Smith",
-    "email": "jane@example.com",
+    "email": "Joseph@celestial.heavens",
     "favoriteColor": "Blue",
     "birthday": "1992-02-02"
 }
